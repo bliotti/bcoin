@@ -1,7 +1,7 @@
 {
-  "name": "buildcoin",
+  "name": "bcoin",
   "version": "1.0.0",
-  "homepage": "http://bliotti.github.io/buildcoin-ideascale",
+  "homepage": "http://bliotti.github.io/bcoin",
   "dependencies": {
     "@types/react": "16.4.16",
     "bootstrap": "4.1.3",
