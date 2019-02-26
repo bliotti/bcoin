@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/bcoin/precache-manifest.f179d37f9dbeab41e6d552662a83124b.js"
+  "/bcoin/precache-manifest.e0bb985ea7c33f278ea5e32a59c41c49.js"
 );
 
 workbox.clientsClaim();
