@@ -97,7 +97,6 @@ class Admin extends React.Component {
             }}
             toggleSidebar={this.toggleSidebar}
           />
-
           <div
             className="main-panel"
             ref="mainPanel"
