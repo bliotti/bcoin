@@ -25,6 +25,7 @@ class Admin extends React.Component {
     }
   }
   componentDidMount() {
+    console.log(navigator.platform)
     if (navigator.platform.indexOf('Win') > -1) {
       document.documentElement.className += ' perfect-scrollbar-on'
       document.documentElement.classList.remove('perfect-scrollbar-off')
@@ -78,19 +79,10 @@ class Admin extends React.Component {
   handleBgClick = color => {
     this.setState({ backgroundColor: color })
   }
-  getBrandText = path => {
-    for (let i = 0; i < routes.length; i++) {
-      if (
-        this.props.location.pathname.indexOf(
-          routes[i].layout + routes[i].path
-        ) !== -1
-      ) {
-        return routes[i].name
-      }
-    }
-    return 'Brand'
-  }
+
   render() {
+    // console.log(this.props)
+
     return (
       <>
         <div className="wrapper">
@@ -105,6 +97,7 @@ class Admin extends React.Component {
             }}
             toggleSidebar={this.toggleSidebar}
           />
+
           <div
             className="main-panel"
             ref="mainPanel"
@@ -112,7 +105,7 @@ class Admin extends React.Component {
           >
             <AdminNavbar
               {...this.props}
-              brandText={this.getBrandText(this.props.location.pathname)}
+              brandText="Brand"
               toggleSidebar={this.toggleSidebar}
               sidebarOpened={this.state.sidebarOpened}
             />

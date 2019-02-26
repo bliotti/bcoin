@@ -1,75 +1,37 @@
 import React from 'react'
-// nodejs library that concatenates classes
-import classNames from 'classnames'
 // react plugin used to create charts
-import { Line, Bar, Doughnut } from 'react-chartjs-2'
+import { Bar, Doughnut } from 'react-chartjs-2'
 
 // reactstrap components
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardHeader,
   CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
   Table,
   Row,
-  Col,
-  UncontrolledTooltip
+  Col
 } from 'reactstrap'
 
 // core components
-import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4
-} from '../variables/charts.jsx'
-
+import { chartExample2, chartExample3 } from '../variables/charts.jsx'
 import { dataT } from '../assets/dataT.js'
-
-// export const dataT = [
-//   {
-//     IdeaTitle: 'Lessons learned from the San Jose Public Street Light Project',
-//     Author: 'Tony Barrile',
-//     Votes: '478',
-//     TokensAwarded: '1230',
-//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/350469-45889'
-//   },
-//   {
-//     IdeaTitle: 'AMA encourages the use of 3000K or lower lighting',
-//     Author: 'Dennis Stone',
-//     Votes: '345',
-//     TokensAwarded: '560',
-//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/349475-45889'
-//   },
-//   {
-//     IdeaTitle: 'LED Street Lights in the Netherlands',
-//     Author: 'David Stout',
-//     Votes: '236',
-//     TokensAwarded: '321',
-//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/349381-45889'
-//   }
-// ]
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bigChartData: 'data1'
+      bigChartData: 'data1',
+      dataT: []
     }
   }
   setBgChartData = name => {
     this.setState({
       bigChartData: name
     })
+  }
+  componentWillMount() {
+    dataT().then(r => this.setState({ dataT: r }))
   }
   render() {
     return (
@@ -94,7 +56,7 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            {/* <Row> */}
+
             <Col lg="6">
               <Card className="card-chart">
                 <CardHeader>
@@ -123,7 +85,7 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            {/* </Row> */}
+
             <Col lg="12">
               <Card className="card-chart">
                 <CardHeader>
@@ -144,12 +106,8 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-          {/* bbb */}
 
-          {/* bbb */}
           <Row>
-            {/* <Col lg="6" md="12" /> */}
-
             <Col lg="12" md="12">
               <Card>
                 <CardHeader>
@@ -166,15 +124,16 @@ class Dashboard extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {dataT.map(x => {
+                      {this.state.dataT.map((x, i) => {
+                        console.log(x)
                         return (
-                          <tr>
+                          <tr key={i}>
                             <td>
-                              <a href={x.link}>{x.IdeaTitle}</a>
+                              <a href={x.url}>{x.title}</a>
                             </td>
-                            <td>{x.Author}</td>
-                            <td>{x.Votes}</td>
-                            <td className="text-center">{x.TokensAwarded}</td>
+                            <td>{x.authorInfo.name}</td>
+                            <td>{x.voteCount}</td>
+                            <td className="text-center">{0}</td>
                           </tr>
                         )
                       })}
