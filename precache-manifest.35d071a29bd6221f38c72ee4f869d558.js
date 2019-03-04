@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "b562002f0db4c9f97658",
+    "revision": "4609065d9d825f828a52",
     "url": "/bcoin/static/css/main.fcabded3.chunk.css"
   },
   {
-    "revision": "b562002f0db4c9f97658",
-    "url": "/bcoin/static/js/main.b562002f.chunk.js"
+    "revision": "4609065d9d825f828a52",
+    "url": "/bcoin/static/js/main.4609065d.chunk.js"
   },
   {
     "revision": "102ff69a23c3da383f59",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/bcoin/static/media/react-logo.6bff29ac.jpg"
   },
   {
-    "revision": "450b29306a4dedb4039cb54b138c963a",
+    "revision": "65fdf76c74aa2d761cf75e8b8e5f1c95",
     "url": "/bcoin/index.html"
   }
 ];
