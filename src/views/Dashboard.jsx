@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
             <Col lg="6">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Tokens Allocated</h5>
+                  <h5 className="card-category">% of Tokens Allocated</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-bell-55 text-info" /> 5000
                   </CardTitle>
@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="6">
-                      <h5 className="card-category">Campaign</h5>
+                      <h5 className="card-category" />
                       <CardTitle tag="h2">Idea</CardTitle>
                     </Col>
                     <Col sm="6" />
