@@ -1,13 +1,13 @@
 {
   "main.css": "/bcoin/static/css/main.fcabded3.chunk.css",
-  "main.js": "/bcoin/static/js/main.4609065d.chunk.js",
-  "main.js.map": "/bcoin/static/js/main.4609065d.chunk.js.map",
+  "main.js": "/bcoin/static/js/main.6341a1b9.chunk.js",
+  "main.js.map": "/bcoin/static/js/main.6341a1b9.chunk.js.map",
   "runtime~main.js": "/bcoin/static/js/runtime~main.102ff69a.js",
   "runtime~main.js.map": "/bcoin/static/js/runtime~main.102ff69a.js.map",
-  "static/js/2.7e8cb606.chunk.js": "/bcoin/static/js/2.7e8cb606.chunk.js",
-  "static/js/2.7e8cb606.chunk.js.map": "/bcoin/static/js/2.7e8cb606.chunk.js.map",
+  "static/js/2.548c9cda.chunk.js": "/bcoin/static/js/2.548c9cda.chunk.js",
+  "static/js/2.548c9cda.chunk.js.map": "/bcoin/static/js/2.548c9cda.chunk.js.map",
   "index.html": "/bcoin/index.html",
-  "precache-manifest.35d071a29bd6221f38c72ee4f869d558.js": "/bcoin/precache-manifest.35d071a29bd6221f38c72ee4f869d558.js",
+  "precache-manifest.e402068c805b0007bac1c253e9cba8ae.js": "/bcoin/precache-manifest.e402068c805b0007bac1c253e9cba8ae.js",
   "service-worker.js": "/bcoin/service-worker.js",
   "static/css/main.fcabded3.chunk.css.map": "/bcoin/static/css/main.fcabded3.chunk.css.map",
   "static/media/react-logo.jpg": "/bcoin/static/media/react-logo.6bff29ac.jpg"
