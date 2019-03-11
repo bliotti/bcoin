@@ -12,14 +12,14 @@ var routes = [
   },
   {
     path: '/map',
-    name: 'Map',
+    name: 'Map   (coming soon)',
     icon: 'tim-icons icon-pin',
     component: Map,
     layout: '/admin'
   },
   {
     path: '/tables',
-    name: 'Table List',
+    name: 'Table List   (coming soon)',
     icon: 'tim-icons icon-puzzle-10',
     component: TableList,
     layout: '/admin'

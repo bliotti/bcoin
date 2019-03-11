@@ -25,7 +25,7 @@ class FixedPlugin extends Component {
     }
   }
   componentDidMount() {
-    document.body.classList.add('white-content')
+    document.body.classList.remove('white-content')
   }
   render() {
     return (

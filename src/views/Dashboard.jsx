@@ -33,7 +33,11 @@ class Dashboard extends React.Component {
   componentWillMount() {
     dataT().then(r => this.setState({ dataT: r }))
   }
+
   render() {
+    console.log(this.state.dataT)
+    // const dataT2 = this.state.dataT
+    // console.log([dataT[0], ...dataT2[3]])
     return (
       <>
         <div className="content">
@@ -133,7 +137,7 @@ class Dashboard extends React.Component {
                             </td>
                             <td>{x.authorInfo.name}</td>
                             <td>{x.voteCount}</td>
-                            <td className="text-center">{0}</td>
+                            <td className="text-center">{x.amountSpent}</td>
                           </tr>
                         )
                       })}

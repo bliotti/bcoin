@@ -12,6 +12,9 @@ import FixedPlugin from '../../components/FixedPlugin/FixedPlugin.jsx'
 import routes from 'routes.js'
 
 import logo from '../../assets/img/react-logo.jpg'
+import Dashboard from '../../views/Dashboard.jsx'
+import Map from '../../views/Map.jsx'
+import Tables from '../../views/TableList.jsx'
 
 var ps
 
@@ -21,7 +24,8 @@ class Admin extends React.Component {
     this.state = {
       backgroundColor: 'blue',
       sidebarOpened:
-        document.documentElement.className.indexOf('nav-open') !== -1
+        document.documentElement.className.indexOf('nav-open') !== -1,
+      activeComponent: 'Dashboard'
     }
   }
   componentDidMount() {
@@ -96,6 +100,7 @@ class Admin extends React.Component {
               imgSrc: logo
             }}
             toggleSidebar={this.toggleSidebar}
+            activeComponent={this.state.activeComponent}
           />
           <div
             className="main-panel"
@@ -104,11 +109,15 @@ class Admin extends React.Component {
           >
             <AdminNavbar
               {...this.props}
-              brandText="Brand"
+              brandText="BUILDCOIN FOUNDATION"
               toggleSidebar={this.toggleSidebar}
               sidebarOpened={this.state.sidebarOpened}
             />
-            <Switch>{this.getRoutes(routes)}</Switch>
+
+            {/* <Switch>{this.getRoutes(routes)}</Switch> */}
+            {this.state.activeComponent === 'Dashboard' && <Dashboard />}
+            {this.state.activeComponent === 'Map' && <Map />}
+            {this.state.activeComponent === 'Tables' && <Tables />}
             {// we don't want the Footer to be rendered on map page
             this.props.location.pathname.indexOf('maps') !== -1 ? null : (
               <Footer fluid />

@@ -34,8 +34,16 @@ export const dataT = () => {
     })
       .then(res => res.json())
       .then(res => {
+        // console.log(res.data)
+        // console.log([...JSON.parse(res.data[0]), JSON.parse(res.data[1])])
         if (res.message === 'proxy request success') {
-          resolve(JSON.parse(res.data))
+          const body1 = JSON.parse(res.data[0])
+          const body2 = JSON.parse(res.data[1])
+          body1[0].amountSpent = Number(body2.amountSpent)
+          body1[1].amountSpent = 0
+          body1[2].amountSpent = 0
+
+          resolve(body1)
         }
       })
       .catch(err => console.log(err))
