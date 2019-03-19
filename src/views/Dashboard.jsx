@@ -14,7 +14,10 @@ import {
 } from 'reactstrap'
 
 // core components
-import { chartExample2, chartExample3 } from '../variables/charts.jsx'
+import { doughNutChartOptions, barChartOptions } from '../variables/charts.jsx'
+// import { res } from '../variables/charts.jsx'
+// const { doughNutChartOptions, barChartOptions } = res
+
 import { dataT } from '../assets/dataT.js'
 
 class Dashboard extends React.Component {
@@ -53,8 +56,8 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Doughnut
-                      data={chartExample2.data}
-                      options={chartExample2.options}
+                      data={doughNutChartOptions.data}
+                      options={doughNutChartOptions.options}
                     />
                   </div>
                 </CardBody>
@@ -102,8 +105,8 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Bar
-                      data={chartExample3.data}
-                      options={chartExample3.options}
+                      data={barChartOptions.data}
+                      options={barChartOptions.options}
                     />
                   </div>
                 </CardBody>

@@ -1,280 +1,74 @@
-// ##############################
-// // // Chart variables
-// #############################
+import { dataT } from '../assets/dataT'
 
-// import { dataT } from '../views/Dashboard.jsx' // chartExample1 and chartExample2 options
-// import { dataT } from '../assets/dataT.js'
-// const dataT = require('../views/Dashboard')
-// console.log(dataT)
+let dataTStatic = dataT().then(r => r) //?
 
-const dataT = [
-  {
-    IdeaTitle: 'Lessons learned from the San Jose Public Street Light Project',
-    Author: 'Tony Barrile',
-    Votes: '478',
-    TokensAwarded: '1230',
-    link: 'http://ideas.buildcoinfoundation.org/a/dtd/350469-45889'
-  },
-  {
-    IdeaTitle: 'AMA encourages the use of 3000K or lower lighting',
-    Author: 'Dennis Stone',
-    Votes: '345',
-    TokensAwarded: '560',
-    link: 'http://ideas.buildcoinfoundation.org/a/dtd/349475-45889'
-  },
-  {
-    IdeaTitle: 'LED Street Lights in the Netherlands',
-    Author: 'David Stout',
-    Votes: '236',
-    TokensAwarded: '321',
-    link: 'http://ideas.buildcoinfoundation.org/a/dtd/349381-45889'
-  }
-]
+// const dataTStatic = [
+//   {
+//     IdeaTitle: 'Lessons learned from the San Jose Public Street Light Project',
+//     Author: 'Tony Barrile',
+//     Votes: '478',
+//     TokensAwarded: '1230',
+//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/350469-45889'
+//   },
+//   {
+//     IdeaTitle: 'AMA encourages the use of 3000K or lower lighting',
+//     Author: 'Dennis Stone',
+//     Votes: '345',
+//     TokensAwarded: '560',
+//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/349475-45889'
+//   },
+//   {
+//     IdeaTitle: 'LED Street Lights in the Netherlands',
+//     Author: 'David Stout',
+//     Votes: '236',
+//     TokensAwarded: '321',
+//     link: 'http://ideas.buildcoinfoundation.org/a/dtd/349381-45889'
+//   }
+// ]
 
-let chart1_2_options = {
-  maintainAspectRatio: false,
-  legend: {
-    display: true,
-    position: 'bottom',
-    // fullWidth: true,
-    reverse: false
-    // labels: {
-    //   fontColor: 'rgb(255, 99, 132)'
-    // }
-  },
-  tooltips: {
-    backgroundColor: '#f5f5f5',
-    titleFontColor: '#333',
-    bodyFontColor: '#666',
-    bodySpacing: 4,
-    xPadding: 12,
-    mode: 'nearest',
-    intersect: 0,
-    position: 'nearest'
-  },
-  responsive: true
-  // scales: {
-  //   yAxes: [
-  //     {
-  //       barPercentage: 1.6,
-  //       gridLines: {
-  //         drawBorder: false,
-  //         color: 'rgba(29,140,248,0.0)',
-  //         zeroLineColor: 'transparent'
-  //       },
-  //       ticks: {
-  //         suggestedMin: 60,
-  //         suggestedMax: 125,
-  //         padding: 20,
-  //         fontColor: '#9a9a9a'
-  //       }
-  //     }
-  //   ],
-  //   xAxes: [
-  //     {
-  //       barPercentage: 1.6,
-  //       gridLines: {
-  //         drawBorder: false,
-  //         color: 'rgba(29,140,248,0.1)',
-  //         zeroLineColor: 'transparent'
-  //       },
-  //       ticks: {
-  //         padding: 20,
-  //         fontColor: '#9a9a9a'
-  //       }
-  //     }
-  //   ]
-  // }
-}
+console.log(dataTStatic)
 
-// #########################################
-// // // used inside src/views/Dashboard.jsx
-// #########################################
-let chartExample1 = {
-  data1: canvas => {
-    let ctx = canvas.getContext('2d')
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50)
-
-    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)')
-    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)')
-    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)') //blue colors
-
-    return {
-      labels: [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC'
-      ],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#1f8ef1',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#1f8ef1',
-          pointBorderColor: 'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#1f8ef1',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100]
-        }
-      ]
-    }
-  },
-  data2: canvas => {
-    let ctx = canvas.getContext('2d')
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50)
-
-    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)')
-    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)')
-    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)') //blue colors
-
-    return {
-      labels: [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC'
-      ],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#1f8ef1',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#1f8ef1',
-          pointBorderColor: 'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#1f8ef1',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120]
-        }
-      ]
-    }
-  },
-  data3: canvas => {
-    let ctx = canvas.getContext('2d')
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50)
-
-    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)')
-    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)')
-    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)') //blue colors
-
-    return {
-      labels: [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC'
-      ],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#1f8ef1',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#1f8ef1',
-          pointBorderColor: 'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#1f8ef1',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
-        }
-      ]
-    }
-  },
-  options: chart1_2_options
-}
-
-// #########################################
-// // // used inside src/views/Dashboard.jsx
-// #########################################
-let chartExample2 = {
+let doughNutChartOptions = {
   data: canvas => {
     let ctx = canvas.getContext('2d')
-
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50)
-
     gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)')
     gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)')
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)') //blue colors
 
     return {
-      labels: dataT.map(x => x.Author), //['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: dataTStatic.map(x => x.Author), //['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [
         {
-          // label: 'Data',
-          // fill: true,
-          // backgroundColor: gradientStroke,
-          // borderColor: '#1f8ef1',
-          // borderWidth: 2,
-          // borderDash: [],
-          // borderDashOffset: 0.0,
-          // pointBackgroundColor: '#1f8ef1',
-          // pointBorderColor: 'rgba(255,255,255,0)',
-          // pointHoverBackgroundColor: '#1f8ef1',
-          // pointBorderWidth: 20,
-          // pointHoverRadius: 4,
-          // pointHoverBorderWidth: 15,
-          // pointRadius: 4,
-
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
           hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-          data: dataT.map(x => x.Votes)
+          data: dataTStatic.map(x => x.Votes)
         }
       ]
     }
   },
-  options: chart1_2_options
+  options: {
+    maintainAspectRatio: false,
+    legend: {
+      display: true,
+      position: 'bottom',
+      reverse: false
+    },
+    tooltips: {
+      backgroundColor: '#f5f5f5',
+      titleFontColor: '#333',
+      bodyFontColor: '#666',
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: 'nearest',
+      intersect: 0,
+      position: 'nearest'
+    },
+    responsive: true
+  }
 }
 
-// #########################################
-// // // used inside src/views/Dashboard.jsx
-// #########################################
-let chartExample3 = {
+let barChartOptions = {
   data: canvas => {
     let ctx = canvas.getContext('2d')
 
@@ -285,7 +79,7 @@ let chartExample3 = {
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)') //purple colors
 
     return {
-      labels: dataT.map(x => x.IdeaTitle.substring(0, 16)),
+      labels: dataTStatic.map(x => x.IdeaTitle.substring(0, 16)),
       datasets: [
         {
           label: 'Ideas',
@@ -296,7 +90,7 @@ let chartExample3 = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: dataT.map(x => x.TokensAwarded)
+          data: dataTStatic.map(x => x.TokensAwarded)
         }
       ]
     }
@@ -350,105 +144,4 @@ let chartExample3 = {
   }
 }
 
-// #########################################
-// // // used inside src/views/Dashboard.jsx
-// #########################################
-const chartExample4 = {
-  data: canvas => {
-    let ctx = canvas.getContext('2d')
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50)
-
-    gradientStroke.addColorStop(1, 'rgba(66,134,121,0.15)')
-    gradientStroke.addColorStop(0.4, 'rgba(66,134,121,0.0)') //green colors
-    gradientStroke.addColorStop(0, 'rgba(66,134,121,0)') //green colors
-
-    return {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: '#00d6b4',
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: '#00d6b4',
-          pointBorderColor: 'rgba(255,255,255,0)',
-          pointHoverBackgroundColor: '#00d6b4',
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [90, 27, 60, 12, 80]
-        }
-      ]
-    }
-  },
-  options: {
-    maintainAspectRatio: false,
-    legend: {
-      display: false
-    },
-
-    tooltips: {
-      backgroundColor: '#f5f5f5',
-      titleFontColor: '#333',
-      bodyFontColor: '#666',
-      bodySpacing: 4,
-      xPadding: 12,
-      mode: 'nearest',
-      intersect: 0,
-      position: 'nearest'
-    },
-    responsive: true,
-    scales: {
-      yAxes: [
-        {
-          barPercentage: 1.6,
-          gridLines: {
-            drawBorder: false,
-            color: 'rgba(29,140,248,0.0)',
-            zeroLineColor: 'transparent'
-          },
-          ticks: {
-            suggestedMin: 50,
-            suggestedMax: 125,
-            padding: 20,
-            fontColor: '#9e9e9e'
-          }
-        }
-      ],
-
-      xAxes: [
-        {
-          barPercentage: 1.6,
-          gridLines: {
-            drawBorder: false,
-            color: 'rgba(0,242,195,0.1)',
-            zeroLineColor: 'transparent'
-          },
-          ticks: {
-            padding: 20,
-            fontColor: '#9e9e9e'
-          }
-        }
-      ]
-    }
-  }
-}
-
-module.exports = {
-  chartExample1, // in src/views/Dashboard.jsx
-  chartExample2, // in src/views/Dashboard.jsx
-  chartExample3, // in src/views/Dashboard.jsx
-  chartExample4 // in src/views/Dashboard.jsx
-}
-
-// export default {
-//   chartExample1, // in src/views/Dashboard.jsx
-//   chartExample2, // in src/views/Dashboard.jsx
-//   chartExample3, // in src/views/Dashboard.jsx
-//   chartExample4 // in src/views/Dashboard.jsx
-// }
+export { doughNutChartOptions, barChartOptions }
