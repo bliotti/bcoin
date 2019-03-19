@@ -1,8 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-// react plugin used to create charts
 import { Bar, Doughnut } from 'react-chartjs-2'
-
-// reactstrap components
 import {
   Card,
   CardHeader,
@@ -12,20 +10,18 @@ import {
   Row,
   Col
 } from 'reactstrap'
-
-// core components
-import { doughNutChartOptions, barChartOptions } from '../variables/charts.jsx'
-// import { res } from '../variables/charts.jsx'
-// const { doughNutChartOptions, barChartOptions } = res
-
-import { dataT } from '../assets/dataT.js'
+import { getChartOptions } from '../variables/charts.jsx'
+import { data } from '../assets/data'
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       bigChartData: 'data1',
-      dataT: []
+      data: [],
+      doughNutChartOptions: null,
+      barChartOptions: null,
+      activeIdea: 0
     }
   }
   setBgChartData = name => {
@@ -34,91 +30,69 @@ class Dashboard extends React.Component {
     })
   }
   componentWillMount() {
-    dataT().then(r => this.setState({ dataT: r }))
+    data().then(r => this.setState({ data: r }))
+    getChartOptions().then(res => {
+      this.setState({
+        doughNutChartOptions: res.doughNutChartOptions,
+        barChartOptions: res.barChartOptions
+      })
+    })
+  }
+  handleIdeaClick = (e, i) => {
+    e.preventDefault()
+    this.setState({ activeIdea: i })
   }
 
   render() {
-    console.log(this.state.dataT)
-    // const dataT2 = this.state.dataT
-    // console.log([dataT[0], ...dataT2[3]])
+    const { activeIdea, data } = this.state
     return (
       <>
         <div className="content">
           <Row>
-            <Col lg="6">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">% of Tokens Allocated</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-bell-55 text-info" /> 5000
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Doughnut
-                      data={doughNutChartOptions.data}
-                      options={doughNutChartOptions.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-
-            <Col lg="6">
-              <Card className="card-chart">
-                <CardHeader>
-                  <Row>
-                    <Col className="text-left" sm="6">
-                      <h5 className="card-category" />
-                      <CardTitle tag="h2">Idea</CardTitle>
-                    </Col>
-                    <Col sm="6" />
-                  </Row>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area" style={{ padding: '10px' }}>
-                    <p>
-                      The range of LED color temperatures should be 3000K to
-                      4300K, and is based on study of visibility and preference.
-                      In the Advanced Street Lighting Technologies Assessment
-                      Project for the City of San José (2010), it was found that
-                      while higher color temperature LEDs are more efficient,
-                      subjectively, participants generally preferred lower color
-                      temperature LEDs. There are also concerns from the
-                      astronomy community about the presence of blue wavelengths
-                      in higher color temperature light sources.
-                    </p>
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-
             <Col lg="12">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Votes and Tokens Awarded</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-delivery-fast text-primary" />{' '}
-                    {/* 3,500€ */}
-                  </CardTitle>
+                  <CardTitle tag="h4">% of Tokens Allocated</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Bar
-                      data={barChartOptions.data}
-                      options={barChartOptions.options}
-                    />
+                    {this.state.doughNutChartOptions &&
+                      this.state.doughNutChartOptions.data && (
+                        <Doughnut
+                          data={this.state.doughNutChartOptions.data}
+                          options={this.state.doughNutChartOptions.options}
+                        />
+                      )}
                   </div>
                 </CardBody>
               </Card>
             </Col>
           </Row>
-
+          <Row>
+            <Col lg="12">
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardTitle tag="h4">Votes and Tokens Awarded</CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    {this.state.barChartOptions &&
+                      this.state.barChartOptions.data && (
+                        <Bar
+                          data={this.state.barChartOptions.data}
+                          options={this.state.barChartOptions.options}
+                        />
+                      )}
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col lg="12" md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">All Ideas</CardTitle>
+                  <CardTitle tag="h4">Ideas</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table className="tablesorter" responsive>
@@ -131,21 +105,38 @@ class Dashboard extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.dataT.map((x, i) => {
-                        console.log(x)
-                        return (
-                          <tr key={i}>
-                            <td>
-                              <a href={x.url}>{x.title}</a>
-                            </td>
-                            <td>{x.authorInfo.name}</td>
-                            <td>{x.voteCount}</td>
-                            <td className="text-center">{x.amountSpent}</td>
-                          </tr>
-                        )
-                      })}
+                      {this.state.data
+                        .sort((a, b) => {
+                          return b.amountSpent - a.amountSpent
+                        })
+                        .map((x, i) => {
+                          // console.log('sasa', x)
+                          return (
+                            <tr key={i}>
+                              <td>
+                                <a
+                                  href={'#'}
+                                  name={i}
+                                  onClick={e => this.handleIdeaClick(e, i)}
+                                >
+                                  {x.title}
+                                </a>
+                              </td>
+                              <td>{x.authorInfo.name}</td>
+                              <td>{x.voteCount}</td>
+                              <td className="text-center">{x.amountSpent}</td>
+                            </tr>
+                          )
+                        })}
                     </tbody>
                   </Table>
+                  <div className="chart-area" style={{ padding: '10px' }}>
+                    <p style={{ minHeight: '150px' }}>
+                      {this.state &&
+                        this.state.data[0] &&
+                        this.state.data[activeIdea].text}
+                    </p>
+                  </div>
                 </CardBody>
               </Card>
             </Col>
